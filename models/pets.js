@@ -11,7 +11,6 @@ class Pet {
                 res.status(400).json({erro})
             } else {
                 const novoPet = { nome: pet.nome, imagem: novoCaminho }
-                console.log('cheguei aqui')
                 conexao.query(sql, novoPet, erro => {
                     if (erro) {
                         console.log(erro.message)

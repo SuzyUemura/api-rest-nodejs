@@ -2,8 +2,10 @@ const Atendimento = require('../models/atendimento')
 
 module.exports = app => { 
     app.get('/atendimento', (req, res) => {
-        Atendimento.listar(res)
-    })
+        Atendimento.listar()
+                    .then(resultados => res.json(resultados)) //200ok é o padrao
+                    .catch(erros => res.status(400).json(erros))
+                })
 
     app.get('/atendimento/:id', (req, res) => {
         const id = req.params.id
